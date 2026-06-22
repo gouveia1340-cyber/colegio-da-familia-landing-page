@@ -15,14 +15,14 @@ import { MackenzieSection } from "./components/MackenzieSection";
 import { MissionVisionValuesSection } from "./components/MissionVisionValuesSection";
 import { MothersDaySection } from "./components/MothersDaySection";
 import { PillarsSection } from "./components/PillarsSection";
-import { blogPosts } from "./content";
+import { blogPosts, routeFromLocation } from "./content";
 
 const HOME_TITLE = "Colégio da Família | Educação Cristã em Marataízes-ES";
 const HOME_DESCRIPTION =
   "Educação Infantil cristã em Marataízes-ES, com princípios, cuidado, parceria com a família e Sistema Mackenzie de Ensino.";
 
 export default function App() {
-  const currentPath = window.location.pathname;
+  const currentPath = routeFromLocation(window.location.pathname);
   const article = blogPosts.find((post) => post.route === currentPath);
 
   useEffect(() => {

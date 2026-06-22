@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { navLinks, siteConfig } from "../content";
+import { homeAnchor, navLinks, siteConfig } from "../content";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +8,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/20 bg-family-burgundy/[0.92] text-white shadow-sm backdrop-blur-xl">
       <div className="container-page flex h-20 items-center justify-between gap-4">
         <a
-          href="/#inicio"
+          href={homeAnchor("inicio")}
           className="focus-ring flex shrink-0 items-center gap-3 rounded-lg"
           aria-label="Voltar ao início"
         >

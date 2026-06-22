@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { heroBadges, heroImages, siteConfig } from "../content";
+import { heroBadges, heroImages, homeAnchor, siteConfig } from "../content";
 import { Icon } from "./Icon";
 
 export function Hero() {
@@ -72,7 +72,7 @@ export function Hero() {
             >
               Agendar uma visita
             </a>
-            <a className="outline-button" href="#mackenzie">
+            <a className="outline-button" href={homeAnchor("mackenzie")}>
               Conhecer a proposta pedagógica
             </a>
           </div>

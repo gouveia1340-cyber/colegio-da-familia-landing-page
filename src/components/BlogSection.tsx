@@ -1,4 +1,4 @@
-import { blogPosts } from "../content";
+import { appPath, blogPosts } from "../content";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -24,7 +24,7 @@ export function BlogSection() {
               <p className="mt-4 flex-1 text-sm leading-7 text-family-ink/74">{post.excerpt}</p>
               <a
                 className="focus-ring mt-6 inline-flex items-center gap-2 rounded-lg text-sm font-bold text-family-wine hover:text-family-burgundy"
-                href={post.route}
+                href={appPath(post.route)}
               >
                 Ler artigo
                 <Icon className="h-4 w-4" name="chevron" />

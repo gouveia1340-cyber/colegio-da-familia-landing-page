@@ -1,4 +1,4 @@
-import { buildWhatsAppUrl, type ArticlePost } from "../content";
+import { buildWhatsAppUrl, homeAnchor, type ArticlePost } from "../content";
 import { Icon } from "./Icon";
 
 type ArticlePageProps = {
@@ -12,7 +12,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
         <div className="mx-auto max-w-3xl">
           <a
             className="focus-ring inline-flex items-center gap-2 rounded-lg text-sm font-bold text-family-wine hover:text-family-burgundy"
-            href="/#conteudos"
+            href={homeAnchor("conteudos")}
           >
             <Icon className="h-4 w-4 rotate-180" name="chevron" />
             Voltar aos conteúdos

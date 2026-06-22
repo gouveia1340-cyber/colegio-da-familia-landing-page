@@ -18,6 +18,39 @@ export type IconName =
 export const WHATSAPP_URL =
   "https://api.whatsapp.com/send/?phone=5528999551976&text&type=phone_number&app_absent=0&utm_source=ig";
 
+export const appBaseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+export function assetPath(path: string) {
+  return `${appBaseUrl}${path.replace(/^\/+/, "")}`;
+}
+
+export function appPath(path: string) {
+  const basePath = appBaseUrl.replace(/\/$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${normalizedPath}`;
+}
+
+export function homeAnchor(id: string) {
+  const normalizedId = id.startsWith("#") ? id.slice(1) : id;
+  return `${appBaseUrl}#${normalizedId}`;
+}
+
+export function routeFromLocation(pathname: string) {
+  const basePath = appBaseUrl.replace(/\/$/, "");
+
+  if (basePath && basePath !== "/" && pathname === basePath) {
+    return "/";
+  }
+
+  if (basePath && basePath !== "/" && pathname.startsWith(`${basePath}/`)) {
+    return pathname.slice(basePath.length);
+  }
+
+  return pathname;
+}
+
 export function buildWhatsAppUrl(message?: string) {
   if (!message) {
     return WHATSAPP_URL;
@@ -32,16 +65,16 @@ export const siteConfig = {
   name: "Colégio da Família",
   tagline: "Educando e impulsionando com princípios.",
   address: "Rua Desembargador Ayrton Lemos Filho, 300, Barra do Itapemirim, Marataízes - ES",
-  logo: "/logo-colegio-da-familia-cropped.png",
+  logo: assetPath("logo-colegio-da-familia-cropped.png"),
   // TODO: Trocar pelos links/fotos reais da escola quando estiverem disponíveis.
   images: {
-    heroFallback: "/images/placeholder-criancas-escola.png",
+    heroFallback: assetPath("images/placeholder-criancas-escola.png"),
     about: {
-      primary: "/images/about/quem-somos-principal.webp",
-      secondary: "/images/about/quem-somos-secundaria.webp",
-      fallback: "/images/placeholder-familia-escola.png",
+      primary: assetPath("images/about/quem-somos-principal.webp"),
+      secondary: assetPath("images/about/quem-somos-secundaria.webp"),
+      fallback: assetPath("images/placeholder-familia-escola.png"),
     },
-    mackenzie: "/images/hero/hero-02-atividade-infantil.webp",
+    mackenzie: assetPath("images/hero/hero-02-atividade-infantil.webp"),
   },
   contact: {
     whatsAppHref: WHATSAPP_URL,
@@ -58,30 +91,30 @@ export const siteConfig = {
 
 export const heroImages = [
   {
-    src: "/images/hero/hero-01-quadra.webp",
+    src: assetPath("images/hero/hero-01-quadra.webp"),
     label: "Alunos reunidos em atividade escolar",
   },
   {
-    src: "/images/hero/hero-02-atividade-infantil.webp",
+    src: assetPath("images/hero/hero-02-atividade-infantil.webp"),
     label: "Crianças em atividade da Educação Infantil",
   },
   {
-    src: "/images/hero/hero-03-turma-sala.webp",
+    src: assetPath("images/hero/hero-03-turma-sala.webp"),
     label: "Turma em ambiente escolar acolhedor",
   },
   {
-    src: "/images/hero/hero-04-educacao-corporal.webp",
+    src: assetPath("images/hero/hero-04-educacao-corporal.webp"),
     label: "Crianças em atividade corporal orientada",
   },
   {
-    src: "/images/hero/hero-05-brincadeira-coletiva.webp",
+    src: assetPath("images/hero/hero-05-brincadeira-coletiva.webp"),
     label: "Crianças em momento coletivo na escola",
   },
 ];
 
 export const siteVideos = {
   socialProof: {
-    src: "/videos/depoimento-familias.mp4",
+    src: assetPath("videos/depoimento-familias.mp4"),
     title: "O que as famílias dizem sobre nós",
     subtitle:
       "A melhor forma de conhecer a essência do Colégio da Família é ouvir quem já caminha conosco. Famílias que compartilham da nossa missão ajudam a revelar o cuidado, a confiança e o propósito presentes em nossa rotina escolar.",
@@ -91,7 +124,7 @@ export const siteVideos = {
     sizeNote: "8,2 MB",
   },
   mothersDay: {
-    src: "/videos/dia-das-maes-criancas.mp4",
+    src: assetPath("videos/dia-das-maes-criancas.mp4"),
     title: "Afeto, família e memórias que formam",
     subtitle:
       "No Colégio da Família, entendemos que a educação também acontece nos gestos de carinho, nas palavras de gratidão e nas experiências que fortalecem os vínculos entre criança, família e escola.",
@@ -103,13 +136,13 @@ export const siteVideos = {
 };
 
 export const navLinks = [
-  { label: "Início", href: "/#inicio" },
-  { label: "Propósito", href: "/#proposito" },
-  { label: "Pilares", href: "/#pilares" },
-  { label: "Sistema Mackenzie", href: "/#mackenzie" },
-  { label: "Etapas de ensino", href: "/#educacao-infantil" },
-  { label: "Matrículas", href: "/#matriculas" },
-  { label: "Contato", href: "/#contato" },
+  { label: "Início", href: homeAnchor("inicio") },
+  { label: "Propósito", href: homeAnchor("proposito") },
+  { label: "Pilares", href: homeAnchor("pilares") },
+  { label: "Sistema Mackenzie", href: homeAnchor("mackenzie") },
+  { label: "Etapas de ensino", href: homeAnchor("educacao-infantil") },
+  { label: "Matrículas", href: homeAnchor("matriculas") },
+  { label: "Contato", href: homeAnchor("contato") },
 ];
 
 export const heroBadges = [
