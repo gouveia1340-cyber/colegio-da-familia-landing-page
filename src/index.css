@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #211819;
+  background: #fbf7ee;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+}
+
+section {
+  scroll-margin-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-family-gold;
+  }
+
+  .eyebrow {
+    @apply text-sm font-bold uppercase tracking-[0.16em] text-family-gold;
+  }
+
+  .surface-card {
+    @apply rounded-lg border border-family-burgundy/10 bg-white/[0.82] shadow-soft backdrop-blur;
+  }
+
+  .primary-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-lg bg-family-wine px-5 py-3 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-family-ruby;
+  }
+
+  .support-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-lg bg-family-gold px-5 py-3 text-sm font-bold text-family-burgundy shadow-glow transition hover:-translate-y-0.5 hover:bg-[#d7aa60];
+  }
+
+  .outline-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-lg border border-white/60 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/[0.18];
+  }
+
+  .dark-outline-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-lg border border-family-burgundy/20 bg-white px-5 py-3 text-sm font-bold text-family-burgundy transition hover:-translate-y-0.5 hover:border-family-gold hover:text-family-wine;
+  }
+
+  .photo-frame {
+    @apply overflow-hidden rounded-lg border border-white/70 bg-white shadow-soft;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-family-burgundy focus:shadow-soft;
+  }
+}
